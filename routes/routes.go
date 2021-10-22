@@ -7,4 +7,7 @@ import (
 
 func Setup(app *fiber.App) {
 	app.Get("/", handlers.Home)
+
+	api := app.Group("/api/v1")
+	api.Post("/register", handlers.Register)
 }
