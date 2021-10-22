@@ -9,7 +9,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	_, err := gorm.Open(sqlite.Open("useres.db"), &gorm.Config{})
+	_, err := gorm.Open(sqlite.Open("users.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
