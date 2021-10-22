@@ -1,25 +1,17 @@
 package main
 
 import (
+	"github.com/galifornia/go-fiber-authentication/database"
+	"github.com/galifornia/go-fiber-authentication/routes"
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
 )
 
 func main() {
 	app := fiber.New()
 
-	_, err := gorm.Open(sqlite.Open("users.db"), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
+	database.Connect()
 
-	// Migrate the schema
-	// db.AutoMigrate(&Product{})
+	routes.Setup(app)
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
-	})
-
-	app.Listen(":8000")
+	app.Listen("localhost:8000")
 }
