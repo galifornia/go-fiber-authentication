@@ -9,11 +9,12 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	db, err := gorm.Open(sqlite.Open("users.db"), &gorm.Config{})
+	var err error
+	DB, err = gorm.Open(sqlite.Open("users.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
 
 	// Migrate the schema
-	db.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.User{})
 }
