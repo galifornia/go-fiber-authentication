@@ -10,6 +10,7 @@ func Setup(app *fiber.App) {
 
 	api := app.Group("/api/v1")
 	api.Post("/register", handlers.Register)
-
 	api.Post("/login", handlers.LogIn)
+
+	api.Get("/user", handlers.GetUserCookie)
 }
