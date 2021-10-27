@@ -17,7 +17,7 @@ func GetUserCookie(c *fiber.Ctx) error {
 	if err != nil {
 		c.Status(fiber.StatusUnauthorized)
 		return c.JSON(fiber.Map{
-			"message": "User no authenticated",
+			"message": "No user has been authenticated",
 		})
 	}
 

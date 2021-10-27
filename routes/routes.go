@@ -13,4 +13,5 @@ func Setup(app *fiber.App) {
 	api.Post("/login", handlers.LogIn)
 
 	api.Get("/user", handlers.GetUserCookie)
+	api.Post("/logout", handlers.LogOut)
 }
