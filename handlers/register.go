@@ -20,11 +20,13 @@ func Register(c *fiber.Ctx) error {
 		return err
 	}
 
+	// !FIXME: throw error if user is already registered
 	user := models.User{
 		Name:     data["name"],
 		Email:    data["email"],
 		Password: pwd,
 	}
+
 	database.DB.Create(&user)
 
 	return c.JSON(user)
